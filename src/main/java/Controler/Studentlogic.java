@@ -9,11 +9,12 @@ import Model.Studentmodel;
 
 public class Studentlogic  {
 
-	Studentmodel student= new Studentmodel();
+	
+	
 	Connection conn=DbConnection.dbconnection();
-	String insert="insert into examtable(studentid,sname,dob,aadhar) value(?,?,?,?)";
-	public void storestudentlogic()   {
-		
+	String insert="insert into examtable(studentid,sname,dob,aadharno) value(?,?,?,?)";
+	public String storestudentlogic(Studentmodel student)   {
+		String result=null;
 		try {
 		PreparedStatement ps= conn.prepareStatement(insert);
 		ps.setInt(1, student.getStudentid());
@@ -22,11 +23,12 @@ public class Studentlogic  {
 		ps.setLong(4, student.getAadharno());
 	int row	=ps.executeUpdate();
 	if(row==1) {
-		System.out.println("student record stored successfully");
+		result= "student record stored successfully";
 	}
 		}catch(SQLException e) {
-			System.out.println("error:"+e.getMessage());
+			result= "register is failed resson:"+e.getMessage();
 		}
+		return result;
 		
 	}
 }
