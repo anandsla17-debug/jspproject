@@ -8,6 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 @WebServlet("/student")
 public class StudentController extends HttpServlet{
 Studentmodel studentmodel=new Studentmodel();
@@ -24,9 +26,16 @@ String dob=request.getParameter("dob");
 	studentmodel.setAadharno(aadharno);
 	studentmodel.setDob(dob);
 	
-	
-	        response.setContentType("text/html");
-	PrintWriter out  =response.getWriter();
-	out.println("<h1 style='color:green'>"+studentlogic.storestudentlogic(studentmodel)+"</h1>");
+	String register= studentlogic.storestudentlogic(studentmodel);
+	HttpSession session=request.getSession();
+	session.setAttribute("result", register);
+	        
+	        
+	      // one
+//		        response.setContentType("text/html");
+//	        	PrintWriter out  =response.getWriter();
+//		    	out.println("<h1 style='color:green'>"+studentlogic.storestudentlogic(studentmodel)+"</h1>");
+			//two
+	response.sendRedirect("Studentlogin.jsp");
 	}
 }

@@ -20,6 +20,7 @@
 <input type="number" name="aadharno" placeholder="Enter your aadharno">
 <br>
 <button type="submit">Register</button>
+<a href="Studentlogin.jsp" style="text-decoration: none">Login</a>
 </form>
 
 </body>
