@@ -24,11 +24,13 @@ Studentlogic studentlogic= new Studentlogic();
 		System.out.println("checking.."+result);
 		if(result.equals(studentid+aadharno)) {
 			request.setAttribute("message", "login successfull"); // name =>get , message
+			response.sendRedirect("display");
 		}else {
 			request.setAttribute("message", "login failed");
+			request.getRequestDispatcher("/Studentlogin.jsp").forward(request, response);
 		}
 		
-		request.getRequestDispatcher("/Studentlogin.jsp").forward(request, response);
+		
 		
 	}
 	
