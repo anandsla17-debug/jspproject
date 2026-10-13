@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import Model.DbConnection;
 import Model.Studentmodel;
@@ -58,4 +60,37 @@ public class Studentlogic  {
 		}
 		return result;
 	}
+	
+	String display="select * from examtable";
+	
+	
+	public ArrayList<Studentmodel>  Alldisplay() {
+		ArrayList<Studentmodel>  transfer=new ArrayList<Studentmodel>();
+		
+		try {
+			Connection conn= DbConnection.dbconnection();
+			Statement st= conn.createStatement();
+		ResultSet rs	=st.executeQuery(display);
+		while(rs.next()) {
+			
+		System.out.println("Studentid:"+rs.getInt("studentid")+",student name:"+rs.getString("sname")
+		+"dob:"+rs.getString("dob")+",aadharno:"+rs.getLong("aadharno"));
+		Studentmodel studentmodel= new Studentmodel();
+		studentmodel.setStudentid(rs.getInt("studentid"));
+		studentmodel.setSname(rs.getString("sname"));
+		studentmodel.setDob(rs.getString("dob"));
+		studentmodel.setAadharno(rs.getLong("aadharno"));
+		transfer.add(studentmodel);
+		}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("error:"+e.getMessage());
+		}
+		return transfer;
+	}
+	
+//	public static void main(String[] args) {
+//		Studentlogic studentlogic= new Studentlogic();
+//		studentlogic.Alldisplay();
+//	}
 }
