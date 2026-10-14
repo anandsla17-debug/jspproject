@@ -12,7 +12,7 @@ static String password ="admin";
 	public static Connection  dbconnection() {
 		Connection conn=null;
 		try {
-		 Class.forName("com.mysql.cj.jdbc.Driver");
+		 Class.forName("com.mysql.cj.jdbc.Driver");//old
 		conn= DriverManager.getConnection(url, user, password);
 		}catch (SQLException e) {
 			// TODO: handle exception

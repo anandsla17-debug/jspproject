@@ -89,6 +89,52 @@ public class Studentlogic  {
 		return transfer;
 	}
 	
+	String update ="update examtable set studentid=?,sname=?,dob=?,aadharno=? where studentid=?";
+	public String update(Studentmodel studentmodel) {
+		String result=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(update);
+			ps.setInt(1,studentmodel.getStudentid());
+			ps.setString(2,studentmodel.getSname());
+			ps.setString(3, studentmodel.getDob());
+			ps.setLong(4, studentmodel.getAadharno());
+			ps.setInt(5, studentmodel.getStudentid());
+			int row = ps.executeUpdate();
+			if(row==1) {
+				result="updated";
+			}else {
+				result="not updated";
+			}
+			
+			
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
+	
+	String delete="delete from examtable where studentid=?";
+	public String studentdelete(Studentmodel studentmodel) {
+		String result=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(delete);
+			ps.setInt(1,studentmodel.getStudentid());
+			int row= ps.executeUpdate();
+			if(row==1) {
+				result="deleted";
+			}else {
+				result ="not deleted";
+			}
+		}catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
+	
+	
+	
+	
 //	public static void main(String[] args) {
 //		Studentlogic studentlogic= new Studentlogic();
 //		studentlogic.Alldisplay();
