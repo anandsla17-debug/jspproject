@@ -22,6 +22,10 @@
 <button type="submit">Register</button>
 <a href="Studentlogin.jsp" style="text-decoration: none">Login</a>
 </form>
-
+<%String result =(String) session.getAttribute("result");
+if(result!=null)
+{%>
+<h1><%=result %></h1>
+<%} %>
 </body>
 </html>

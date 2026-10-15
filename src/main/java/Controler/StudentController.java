@@ -35,7 +35,14 @@ String dob=request.getParameter("dob");
 //		        response.setContentType("text/html");
 //	        	PrintWriter out  =response.getWriter();
 //		    	out.println("<h1 style='color:green'>"+studentlogic.storestudentlogic(studentmodel)+"</h1>");
+
 			//two
+	if(register.equals("student record stored successfully")) {
 	response.sendRedirect("Studentlogin.jsp");
+	
+	}else {
+		
+		response.sendRedirect("StudentRegister.jsp");
+	}
 	}
 }

@@ -17,6 +17,8 @@
 <th>Student name</th>
 <th>Student Dob</th>
 <th>Student Aadharno</th>
+<th>student record Update</th>
+<th>student record delete</th>
 </tr>
 
 <%ArrayList<Studentmodel> student=(ArrayList<Studentmodel>)  request.getAttribute("view");
@@ -26,6 +28,8 @@ for(Studentmodel data:student){%>
 <td>Student name:<%=data.getSname() %></td>
 <td>Student dob:<%=data.getDob() %></td>
 <td>Student Aadharno:<%=data.getAadharno() %></td>
+<td><a href="Updatestudent.jsp">update</a></td>
+<td><a href="Studentdelete.jsp">delete</a></td>
 </tr>
 <%} %>
 
